@@ -1,4 +1,4 @@
-name: Create and Close Issue From Commit  # 이 workflow의 이름입니다.
+name: Create and Close Issue From Commit  # 이 workflow의 이름입니다.  
 
 on:
   push:
