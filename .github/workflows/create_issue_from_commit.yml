@@ -1,0 +1,40 @@
+name: Create and Close Issue From Commit  # 이 workflow의 이름입니다.
+
+on:
+  push:
+    branches:
+      - main  # 또는 워치하고 싶은 다른 브랜치
+      # 이 workflow는 "main" 브랜치에 푸시할 때만 실행됩니다. 다른 브랜치에서 실행하려면 여기에 해당 브랜치 이름을 추가하십시오.
+
+jobs:
+  create_and_close_issue:  # 이 job의 이름입니다.
+
+    runs-on: ubuntu-latest  # 이 job이 실행될 실행 환경을 지정합니다. 여기서는 "ubuntu-latest"를 사용합니다.
+
+    steps:
+      - name: Create and Close Issue  # 이 단계의 이름입니다.
+
+        uses: actions/github-script@v3  # GitHub 스크립트 액션을 사용합니다.
+
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}  # GitHub 토큰을 사용하여 인증합니다. 보안을 위해 secrets.GITHUB_TOKEN을 사용합니다.
+
+          script: |
+            const issue = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: context.payload.commits[0].message,
+              body: `Commit details:\n- Author: ${context.payload.commits[0].author.name}\n- Link: ${context.payload.commits[0].url}`
+            }
+            github.issues.create(issue).then(issue => {
+              github.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.data.number,
+                state: 'closed'
+              });
+            })
+            # GitHub API를 사용하여 새 이슈를 생성합니다.
+            # 이슈의 제목은 커밋 메시지의 첫 번째 커밋 메시지로 설정됩니다.
+            # 이슈의 본문에는 커밋의 세부 정보 및 링크가 추가됩니다.
+            # 그런 다음 이슈를 닫습니다.
