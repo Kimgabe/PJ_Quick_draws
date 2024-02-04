@@ -1,5 +1,5 @@
 name: Create and Close Issue From Commit
-on:
+on:  
   push:
     branches:
       - main  # 또는 워치하고 싶은 다른 브랜치
