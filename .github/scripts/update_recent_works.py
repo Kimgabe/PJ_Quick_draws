@@ -1,6 +1,5 @@
 import os
 from github import Github
-from datetime import datetime
 
 # GitHub 설정
 g = Github(os.getenv('GITHUB_TOKEN'))
@@ -34,14 +33,15 @@ for commit in commits:
         category = path_elements[0] if len(path_elements) > 1 else 'Root'
         name = path_elements[-1]
         url = file.raw_url
-        recent_updates.append([date, category, name, url])
+        description = commit.commit.message
+        recent_updates.append([date, category, name, url, description])
         count += 1
         if count >= 10:
             break
 
 # 표 형식으로 README.md에 추가
-table_header = "| 날짜 | 분류 | 작업명 | 링크 |\n| --- | --- | --- | --- |\n"
-table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) |" for item in recent_updates]
+table_header = "| 날짜 | 분류 | 작업명 | 링크 | 설명 |\n| --- | --- | --- | --- | --- |\n"
+table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} |" for item in recent_updates]
 table = table_header + "\n".join(table_rows)
 
 readme_content += table
