@@ -13,7 +13,7 @@ readme_content = contents.decoded_content.decode("utf-8")
 # "📝 Recent Work Updates" 섹션 찾기 및 기존 표 제거
 if "📝 Recent Work Updates" in readme_content:
     # 기존 표가 있다면 제거
-    readme_content = readme_content.split("📝 Recent Work Updates")[0] + "📝 Recent Work Updates\n\n"
+    readme_content = readme_content.split("📝 Recent Work Updates")[0]
 
 # 커밋 로그에서 최근 10개의 항목 가져오기 (.github 폴더 및 README.md 제외)
 commits = repo.get_commits()
@@ -41,11 +41,6 @@ for commit in commits:
         count += 1
         if count >= 10:
             break
-
-# 표 형식으로 README.md에 추가
-table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
-table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5]} |" for item in recent_updates]
-table = table_header + "\n".join(table_rows)
 
 # 커밋 유형 설명 토글 추가
 commit_types_table = """
@@ -76,11 +71,20 @@ commit_types_table = """
 | !HOTFIX | 급하게 치명적인 버그를 고쳐야 하는 경우 |
 \n
 </details>
+\n
 """
 
-readme_content = commit_types_table + readme_content + table
+# "📝 Recent Work Updates" 섹션 바로 위에 커밋 유형 설명 토글 추가
+readme_content += commit_types_table + "📝 Recent Work Updates\n\n"
+
+# 표 형식으로 README.md에 추가
+table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
+table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5]} |" for item in recent_updates]
+table = table_header + "\n".join(table_rows)
+
+readme_content += table
 
 # README.md 업데이트
-repo.update_file(contents.path, "README.md 업데이트: 최근 작업 업데이트 테이블 추가", readme_content, contents.sha)
+repo.update_file(contents.path, "README.md 업데이트: 커밋 컨벤션 토글 및 최근 작업 업데이트", readme_content, contents.sha)
 
-print("README.md has been updated with recent work updates.")
+print("README.md has been updated with the Git commit conventions and recent work updates.")
