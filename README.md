@@ -45,8 +45,6 @@
 </details>
 
 
-📝 Recent Work Updates
-
 | 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |
 | --- | --- | --- | --- | --- | --- |
 | 2024-02-07 | EDA | Simple_EDA.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/586b07010b43be5d8aa85c6ba5b597f7272ee427/EDA%2Fseungsoon%2FSimple_EDA.ipynb) | seungsoon Kim | Rename  |
