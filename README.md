@@ -91,4 +91,23 @@
 | 2024-02-07 | Preprocessing | [공통] data_pipeline(데이터 가져오기 및 시각화).ipynb | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/3958f7b97d918fb5b7914ec259fddf38a0601189/Preprocessing%2Fseungsoon%2F%5B%EA%B3%B5%ED%86%B5%5D%20data_pipeline(%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0%20%EB%B0%8F%20%EC%8B%9C%EA%B0%81%ED%99%94).ipynb) | seungsoon Kim | Feat  |
 | 2024-02-07 | config | label_names.pkl | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/fb42f33a6e0aabfaddabe3dc20385cb9c490868e/config%2Flabel_names.pkl) | seungsoon Kim | Feat  |
 | 2024-02-07 | Preprocessing | [공통] data_pipeline(데이터 가져오기 및 시각화).ipynb | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/ec2aac6ce53a2c647cb20b556eb609e64c9072e1/Preprocessing%2Fseungsoon%2F%5B%EA%B3%B5%ED%86%B5%5D%20data_pipeline(%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0%20%EB%B0%8F%20%EC%8B%9C%EA%B0%81%ED%99%94).ipynb) | seungsoon Kim | Feat  |
-| 2024-02-07 | Preprocessing | [공통] preprocessing_train_df.ipynb | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/b41381d8160060539051f129265728609e2e13b7/Preprocessing%2Fseungsoon%2F%5B%EA%B3%B5%ED%86%B5%5D%20preprocessing_train_df.ipynb) | seungsoon Kim | Feat  |
+| 2024-02-07 | Preprocessing | [공통] preprocessing_train_df.ipynb | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/b41381d8160060539051f129265728609e2e13b7/Preprocessing%2Fseungsoon%2F%5B%EA%B3%B5%ED%86%B5%5D%20preprocessing_train_df.ipynb) | seungsoon Kim | Feat  || 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |
+| --- | --- | --- | --- | --- | --- |
+| 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2Fmodules.xml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | EDA | Simple_EDA_lsj.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/EDA%2Fseonjae%2FSimple_EDA_lsj.ipynb) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | Preprocessing | README.md.txt | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/0ca907e3c1622c34c24a728f2a02368498b47a3d/Preprocessing%2Fseonjae%2FREADME.md.txt) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2Fmodules.xml) | Ashed-Maiingan | Data |
+| 2024-02-10 | EDA | Simple_EDA_lsj.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/EDA%2Fseonjae%2FSimple_EDA_lsj.ipynb) | Ashed-Maiingan | Data |
+| 2024-02-10 | Preprocessing | README.md.txt | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/0ca907e3c1622c34c24a728f2a02368498b47a3d/Preprocessing%2Fseonjae%2FREADME.md.txt) | Ashed-Maiingan | Data |
+| 2024-02-07 | EDA | Simple_EDA.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/586b07010b43be5d8aa85c6ba5b597f7272ee427/EDA%2Fseungsoon%2FSimple_EDA.ipynb) | seungsoon Kim | Rename  |
+| 2024-02-07 | EDA | Sidethon_EDA_seul_v1.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ff7e4b2be72dcf84428f6662858e073a3c0148ee/EDA%2Fseul%2FSidethon_EDA_seul_v1.ipynb) | seulwithlove | Data |
