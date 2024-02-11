@@ -1,0 +1,32 @@
+name: Update README on Commit
+
+on:
+  push:
+    paths-ignore:
+      - 'README.md'  # README.md 파일 변경을 무시합니다.
+      - '.github/**'  # .github 디렉토리 내의 모든 변경을 무시합니다.
+    branches:
+      - main  # main 브랜치에 대한 커밋에서만 실행됩니다.
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install Dependencies
+        run: |
+          pip install PyGithub  # 필요에 따라 추가 패키지를 설치합니다.
+
+      - name: Execute update_recent_works.py Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub 토큰을 환경 변수로 설정합니다.
+        run: |
+          python update_recent_works.py
