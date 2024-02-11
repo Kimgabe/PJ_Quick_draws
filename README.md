@@ -43,3 +43,23 @@
 | !HOTFIX | 급하게 치명적인 버그를 고쳐야 하는 경우 |
 
 </details>
+| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |
+| --- | --- | --- | --- | --- | --- |
+| 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2Fmodules.xml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | EDA | Simple_EDA_lsj.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/EDA%2Fseonjae%2FSimple_EDA_lsj.ipynb) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | Preprocessing | README.md.txt | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/0ca907e3c1622c34c24a728f2a02368498b47a3d/Preprocessing%2Fseonjae%2FREADME.md.txt) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2Fmodules.xml) | Ashed-Maiingan | Data |
+| 2024-02-10 | EDA | Simple_EDA_lsj.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/EDA%2Fseonjae%2FSimple_EDA_lsj.ipynb) | Ashed-Maiingan | Data |
+| 2024-02-10 | Preprocessing | README.md.txt | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/0ca907e3c1622c34c24a728f2a02368498b47a3d/Preprocessing%2Fseonjae%2FREADME.md.txt) | Ashed-Maiingan | Data |
+| 2024-02-07 | EDA | Simple_EDA.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/586b07010b43be5d8aa85c6ba5b597f7272ee427/EDA%2Fseungsoon%2FSimple_EDA.ipynb) | seungsoon Kim | Rename  |
+| 2024-02-07 | EDA | Sidethon_EDA_seul_v1.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/ff7e4b2be72dcf84428f6662858e073a3c0148ee/EDA%2Fseul%2FSidethon_EDA_seul_v1.ipynb) | seulwithlove | Data |
