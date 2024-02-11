@@ -60,28 +60,27 @@ count = 0  # 처리된 커밋 수를 세기 위한 카운터
 
 for commit in commits:
     if count >= 10:
-        break  # 최대 10개의 커밋만 처리
-    files = commit.files  # 커밋에 포함된 파일 목록을 가져옴
+        break
+    files = commit.files
     for file in files:
         if file.filename.endswith("README.md") or file.filename.startswith(".github/"):
-            continue  # README.md 파일과 .github 폴더는 처리에서 제외
-        date = commit.commit.author.date.strftime("%Y-%m-%d")  # 커밋 날짜
-        author = commit.commit.author.name  # 커밋 작성자 이름
-        commit_message = commit.commit.message  # 커밋 메시지
-        commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'  # 커밋 유형
-        # 파일 경로에서 정보 추출
+            continue
+        date = commit.commit.author.date.strftime("%Y-%m-%d")
+        author = commit.commit.author.name
+        commit_message = commit.commit.message.split('\n')[0]  # 커밋 메시지의 첫 줄만 사용
+        commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'
         path_elements = file.filename.split('/')
-        category = path_elements[0] if len(path_elements) > 1 else 'Root'  # 폴더명
-        name = path_elements[-1]  # 파일명
-        url = file.raw_url  # 파일의 URL
-        recent_updates.append([date, category, name, url, author, commit_type])  # 정보 리스트에 추가
+        category = path_elements[0] if len(path_elements) > 1 else 'Root'
+        name = path_elements[-1]
+        url = file.raw_url
+        recent_updates.append([date, category, name, url, author, commit_type.replace('\n', ' ')])  # 줄바꿈을 공백으로 대체
         count += 1
         if count >= 10:
             break
 
 # 표 형식으로 README.md에 최근 업데이트 정보 추가
 table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
-table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5]} |" for item in recent_updates]
+table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5].replace('\n', ' ')} |" for item in recent_updates]
 table = table_header + "\n".join(table_rows)
 readme_content += table  # 테이블 내용을 README 내용에 추가
 
