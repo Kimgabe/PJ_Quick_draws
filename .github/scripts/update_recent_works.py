@@ -84,7 +84,7 @@ if recent_updates:  # 최근 업데이트가 있으면 표를 추가
     readme_content += table  # 테이블 내용을 README 내용에 추가
 
 # README.md 업데이트
-commit_message = "README.md 업데이트: 커밋 컨벤션 토글 및 최근 작업 업데이트"
+commit_message = "Docs : README.md 업데이트: 커밋 컨벤션 토글 및 최근 작업 업데이트"
 repo.update_file(contents.path, commit_message, readme_content, contents.sha)
 
 print("README.md가 성공적으로 업데이트되었습니다.")
