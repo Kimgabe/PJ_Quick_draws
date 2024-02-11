@@ -80,7 +80,7 @@ for commit in commits:
 
 # 표 형식으로 README.md에 최근 업데이트 정보 추가
 table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
-table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5].replace('\n', ' ')} |" for item in recent_updates]
+table_rows = [f"| {item[0]} | {item[1]} | {item[2]} | [링크]({item[3]}) | {item[4]} | {item[5].replace('\\n', ' ')} |" for item in recent_updates]
 table = table_header + "\n".join(table_rows)
 readme_content += table  # 테이블 내용을 README 내용에 추가
 
