@@ -30,10 +30,10 @@ for commit in commits:
         break
     files = commit.files
     for file in files:
-        if file.filename.endswith(("README.md", ".DS_Store")) or file.filename.startswith(".github/"):
+        # .DS_Store를 포함하는 경우 제외
+        if ".DS_Store" in file.filename or file.filename.endswith("README.md") or file.filename.startswith(".github/"):
             continue
-        # 파일의 전체 경로를 유니크한 키로 사용
-        full_path = file.filename
+        full_path = file.filename  # 파일의 전체 경로를 유니크한 키로 사용
         if full_path not in unique_updates:  # 동일한 전체 경로의 커밋이 아직 없으면 추가
             date = commit.commit.author.date.strftime("%Y-%m-%d")
             author = commit.commit.author.name
