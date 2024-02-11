@@ -100,4 +100,27 @@ Data |
 
 Data |
 | 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Data |
-| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2Fmodules.xml) | Ashed-Maiingan | Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/thetjswo/PJ_Quick_draws/raw/ae4fb0b48915b418d4a0be913dd7fd41ae506588/.idea%2Fmodules.xml) | Ashed-Maiingan | Data || 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |
+| --- | --- | --- | --- | --- | --- |
+| 2024-02-11 | Root | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/6f5f594f465db5e0bd57cf1e585737d9db2cde9e/.DS_Store) | Ashed-Maiingan | Merge pull request #46 from thetjswo/main
+
+Data |
+| 2024-02-11 | Preprocessing | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/6f5f594f465db5e0bd57cf1e585737d9db2cde9e/Preprocessing%2F.DS_Store) | Ashed-Maiingan | Merge pull request #46 from thetjswo/main
+
+Data |
+| 2024-02-11 | Preprocessing | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/6f5f594f465db5e0bd57cf1e585737d9db2cde9e/Preprocessing%2Fseonjae%2F.DS_Store) | Ashed-Maiingan | Merge pull request #46 from thetjswo/main
+
+Data |
+| 2024-02-11 | Preprocessing | preprocessing_train_df.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/6f5f594f465db5e0bd57cf1e585737d9db2cde9e/Preprocessing%2Fseonjae%2Fpreprocessing_train_df.ipynb) | Ashed-Maiingan | Merge pull request #46 from thetjswo/main
+
+Data |
+| 2024-02-11 | Root | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/afc6f52e5c4c1213b9560862029afa381d76c5ea/.DS_Store) | thetjswo | Data |
+| 2024-02-11 | Preprocessing | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/afc6f52e5c4c1213b9560862029afa381d76c5ea/Preprocessing%2F.DS_Store) | thetjswo | Data |
+| 2024-02-11 | Preprocessing | .DS_Store | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/afc6f52e5c4c1213b9560862029afa381d76c5ea/Preprocessing%2Fseonjae%2F.DS_Store) | thetjswo | Data |
+| 2024-02-11 | Preprocessing | preprocessing_train_df.ipynb | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/afc6f52e5c4c1213b9560862029afa381d76c5ea/Preprocessing%2Fseonjae%2Fpreprocessing_train_df.ipynb) | thetjswo | Data |
+| 2024-02-10 | .idea | PJ_Quick_draws.iml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2FPJ_Quick_draws.iml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
+| 2024-02-10 | .idea | modules.xml | [링크](https://github.com/Kimgabe/PJ_Quick_draws/raw/90754de81ddaae7318dceff69029a66ec84f7a82/.idea%2Fmodules.xml) | Ashed-Maiingan | Merge pull request #43 from thetjswo/main
+
+Data |
