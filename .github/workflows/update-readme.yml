@@ -29,4 +29,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub 토큰을 환경 변수로 설정합니다.
         run: |
-          python update_recent_works.py
+          python .github/script/update_recent_works.py  # .github 폴더의 script 폴더 안에 있는 파일을 실행합니다.
