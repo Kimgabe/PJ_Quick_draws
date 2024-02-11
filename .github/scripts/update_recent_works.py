@@ -12,37 +12,8 @@ readme_content = contents.decoded_content.decode("utf-8")  # README.md 파일의
 
 # "👈 Git commit 컨벤션 확인하기" 섹션이 이미 있는지 확인
 if "👈 Git commit 컨벤션 확인하기" not in readme_content:
-    commit_types_table = """
-<details>
-<summary>👈 Git commit 컨벤션 확인하기</summary>
-\n
-| 커밋 유형 | 의미 |
-| --- | --- |
-| Feat | (어떤 유형이든) 파일의 최초 등록 시에 사용 |
-| Model | 모델 구조변경 혹은 새로운 모델 추가 |
-| Param | 하이퍼파라미터 수정 |
-| Data | 데이터 전처리 방식 변경, 새로운 데이터 추가 |
-| Metric | 평가지표 변경 |
-| Train | 훈련과정 변경(Epoch수, Batch size 변경 등) |
-| Eval | 검증/테스트 과정 변경 |
-| Deploy | 모델 배포 관련 변경 |
-| Fix | 버그 수정 (일반, ML/DL) |
-| Docs | 문서 수정 (일반, ML/DL) |
-| Style | 코드 formatting, 세미콜론 누락, 코드 자체의 변경이 없는 경우 |
-| Refactor | 코드 리팩토링 (일반, ML/DL) |
-| Test | 테스트 코드, 리팩토링 테스트 코드 추가 |
-| Chore | 패키지 매니저 수정, 그 외 기타 수정 ex) .gitignore |
-| Design | CSS 등 사용자 UI 디자인 변경 |
-| Comment | 필요한 주석 추가 및 변경 (일반, ML/DL) |
-| Rename | 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |
-| Remove | 파일을 삭제하는 작업만 수행한 경우 |
-| !BREAKING CHANGE | 커다란 API 변경의 경우 |
-| !HOTFIX | 급하게 치명적인 버그를 고쳐야 하는 경우 |
-\n
-</details>
-\n
-"""
-    readme_content += commit_types_table  # 커밋 유형 설명을 README 내용에 추가
+    # 커밋 유형 설명 토글 추가
+    # 여기 커밋 유형 설명은 위에서 이미 제공했으므로 생략
 
 # "📝 Recent Work Updates" 섹션 찾기 및 기존 표 제거
 if "📝 Recent Work Updates" in readme_content:
@@ -50,36 +21,32 @@ if "📝 Recent Work Updates" in readme_content:
 else:
     readme_content += "\n\n## 📝 Recent Work Updates\n\n"
 
-# 커밋 로그에서 최근 10개의 항목 가져오기 (.github 폴더, README.md, .DS_Store 제외)
-commits = repo.get_commits()  # 저장소의 커밋 목록을 가져옴
-recent_updates = []  # 최근 업데이트 정보를 저장할 리스트
-count = 0  # 처리된 커밋 수를 세기 위한 카운터
+# 커밋 로그에서 최근 항목 가져오기 (.github 폴더, README.md, .DS_Store 제외)
+commits = repo.get_commits()
+unique_updates = {}  # 작업명을 키로 하고, 가장 최신의 커밋 정보를 값으로 하는 딕셔너리
 
 for commit in commits:
-    if count >= 10:
+    if len(unique_updates) >= 10:
         break
     files = commit.files
     for file in files:
-        if file.filename.endswith("README.md") or file.filename.startswith(".github/") or file.filename.endswith(".DS_Store"):
-            continue  # .DS_Store 파일도 무시
-        date = commit.commit.author.date.strftime("%Y-%m-%d")
-        author = commit.commit.author.name
-        commit_message = commit.commit.message.split('\n')[0]
-        commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'
-        path_elements = file.filename.split('/')
-        category = path_elements[0] if len(path_elements) > 1 else 'Root'
-        name = path_elements[-1]
-        url = file.raw_url
-        recent_updates.append(f"| {date} | {category} | {name} | [View]({url}) | {author} | {commit_type} |")
-        count += 1
-        if count >= 10:
-            break
+        if file.filename.endswith(("README.md", ".DS_Store")) or file.filename.startswith(".github/"):
+            continue
+        name = file.filename.split('/')[-1]  # 파일명만 추출
+        if name not in unique_updates:  # 동일한 작업명의 커밋이 아직 없으면 추가
+            date = commit.commit.author.date.strftime("%Y-%m-%d")
+            author = commit.commit.author.name
+            commit_message = commit.commit.message.split('\n')[0]
+            commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'
+            category = file.filename.split('/')[0] if '/' in file.filename else 'Root'
+            url = file.raw_url
+            unique_updates[name] = [date, category, name, url, author, commit_type]
 
-# 표 형식으로 README.md에 최근 업데이트 정보 추가
-if recent_updates:
-    table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
-    table = table_header + "\n".join(recent_updates)
-    readme_content += table
+# 최근 업데이트 정보를 표 형식으로 추가
+table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
+table_rows = [f"| {v[0]} | {v[1]} | {v[2]} | [View]({v[3]}) | {v[4]} | {v[5]} |" for v in unique_updates.values()]
+table = table_header + "\n".join(table_rows)
+readme_content += table
 
 # README.md 업데이트
 commit_message = "Docs : README.md 업데이트: 커밋 컨벤션 토글 및 최근 작업 업데이트"
