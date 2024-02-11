@@ -23,7 +23,7 @@ else:
 
 # 커밋 로그에서 최근 항목 가져오기 (.github 폴더, README.md, .DS_Store 제외)
 commits = repo.get_commits()
-unique_updates = {}  # 작업명을 키로 하고, 가장 최신의 커밋 정보를 값으로 하는 딕셔너리
+unique_updates = {}  # 파일의 전체 경로를 키로 하고, 가장 최신의 커밋 정보를 값으로 하는 딕셔너리
 
 for commit in commits:
     if len(unique_updates) >= 10:
@@ -32,15 +32,17 @@ for commit in commits:
     for file in files:
         if file.filename.endswith(("README.md", ".DS_Store")) or file.filename.startswith(".github/"):
             continue
-        name = file.filename.split('/')[-1]  # 파일명만 추출
-        if name not in unique_updates:  # 동일한 작업명의 커밋이 아직 없으면 추가
+        # 파일의 전체 경로를 유니크한 키로 사용
+        full_path = file.filename
+        if full_path not in unique_updates:  # 동일한 전체 경로의 커밋이 아직 없으면 추가
             date = commit.commit.author.date.strftime("%Y-%m-%d")
             author = commit.commit.author.name
             commit_message = commit.commit.message.split('\n')[0]
             commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'
-            category = file.filename.split('/')[0] if '/' in file.filename else 'Root'
+            category = full_path.split('/')[0] if '/' in full_path else 'Root'
+            name = full_path.split('/')[-1]
             url = file.raw_url
-            unique_updates[name] = [date, category, name, url, author, commit_type]
+            unique_updates[full_path] = [date, category, name, url, author, commit_type]
 
 # 최근 업데이트 정보를 표 형식으로 추가
 table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
