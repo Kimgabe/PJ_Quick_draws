@@ -46,13 +46,11 @@ if "👈 Git commit 컨벤션 확인하기" not in readme_content:
 
 # "📝 Recent Work Updates" 섹션 찾기 및 기존 표 제거
 if "📝 Recent Work Updates" in readme_content:
-    # 기존 표가 있다면 제거하고 섹션 제목만 남김
     readme_content = readme_content.split("📝 Recent Work Updates")[0] + "## 📝 Recent Work Updates\n\n"
 else:
-    # 섹션 제목 추가
     readme_content += "\n\n## 📝 Recent Work Updates\n\n"
 
-# 커밋 로그에서 최근 10개의 항목 가져오기 (.github 폴더 및 README.md 제외)
+# 커밋 로그에서 최근 10개의 항목 가져오기 (.github 폴더, README.md, .DS_Store 제외)
 commits = repo.get_commits()  # 저장소의 커밋 목록을 가져옴
 recent_updates = []  # 최근 업데이트 정보를 저장할 리스트
 count = 0  # 처리된 커밋 수를 세기 위한 카운터
@@ -62,26 +60,26 @@ for commit in commits:
         break
     files = commit.files
     for file in files:
-        if file.filename.endswith("README.md") or file.filename.startswith(".github/"):
-            continue
+        if file.filename.endswith("README.md") or file.filename.startswith(".github/") or file.filename.endswith(".DS_Store"):
+            continue  # .DS_Store 파일도 무시
         date = commit.commit.author.date.strftime("%Y-%m-%d")
         author = commit.commit.author.name
-        commit_message = commit.commit.message.split('\n')[0]  # 커밋 메시지의 첫 줄만 사용
+        commit_message = commit.commit.message.split('\n')[0]
         commit_type = commit_message.split(':')[0] if ':' in commit_message else 'N/A'
         path_elements = file.filename.split('/')
         category = path_elements[0] if len(path_elements) > 1 else 'Root'
         name = path_elements[-1]
         url = file.raw_url
-        recent_updates.append(f"| {date} | {category} | {name} | [View]({url}) | {author} | {commit_type} |")  # 줄바꿈을 공백으로 대체하여 추가
+        recent_updates.append(f"| {date} | {category} | {name} | [View]({url}) | {author} | {commit_type} |")
         count += 1
         if count >= 10:
             break
 
 # 표 형식으로 README.md에 최근 업데이트 정보 추가
-if recent_updates:  # 최근 업데이트가 있으면 표를 추가
+if recent_updates:
     table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
     table = table_header + "\n".join(recent_updates)
-    readme_content += table  # 테이블 내용을 README 내용에 추가
+    readme_content += table
 
 # README.md 업데이트
 commit_message = "Docs : README.md 업데이트: 커밋 컨벤션 토글 및 최근 작업 업데이트"
