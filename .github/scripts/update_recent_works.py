@@ -1,7 +1,3 @@
-import os
-from github import Github
-from datetime import datetime
-
 # GitHub 설정
 g = Github(os.getenv('GITHUB_TOKEN'))  # GitHub API 토큰을 사용하여 Github 인스턴스 생성
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))  # 환경 변수에서 저장소 이름을 가져와 저장소 객체를 얻음
@@ -13,7 +9,37 @@ readme_content = contents.decoded_content.decode("utf-8")  # README.md 파일의
 # "👈 Git commit 컨벤션 확인하기" 섹션이 이미 있는지 확인
 if "👈 Git commit 컨벤션 확인하기" not in readme_content:
     # 커밋 유형 설명 토글 추가
-    # 여기 커밋 유형 설명은 위에서 이미 제공했으므로 생략
+    git_commit_convention_toggle = """
+<details>
+<summary>👈 Git commit 컨벤션 확인하기</summary>
+
+| 커밋 유형 | 의미 |
+| --- | --- |
+| Feat | (어떤 유형이든) 파일의 최초 등록 시에 사용 |
+| Model | 모델 구조변경 혹은 새로운 모델 추가 |
+| Param | 하이퍼파라미터 수정 |
+| Data | 데이터 전처리 방식 변경, 새로운 데이터 추가 |
+| Metric | 평가지표 변경 |
+| Train | 훈련과정 변경(Epoch수, Batch size 변경 등) |
+| Eval | 검증/테스트 과정 변경 |
+| Deploy | 모델 배포 관련 변경 |
+| Fix | 버그 수정 (일반, ML/DL) |
+| Docs | 문서 수정 (일반, ML/DL) |
+| Style | 코드 formatting, 세미콜론 누락, 코드 자체의 변경이 없는 경우 |
+| Refactor | 코드 리팩토링 (일반, ML/DL) |
+| Test | 테스트 코드, 리팩토링 테스트 코드 추가 |
+| Chore | 패키지 매니저 수정, 그 외 기타 수정 ex) .gitignore |
+| Design | CSS 등 사용자 UI 디자인 변경 |
+| Comment | 필요한 주석 추가 및 변경 (일반, ML/DL) |
+| Rename | 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |
+| Remove | 파일을 삭제하는 작업만 수행한 경우 |
+| !BREAKING CHANGE | 커다란 API 변경의 경우 |
+| !HOTFIX | 급하게 치명적인 버그를 고쳐야 하는 경우 |
+
+</details>
+
+"""
+    readme_content += git_commit_convention_toggle  # README.md에 커밋 컨벤션 토글 추가
 
 # "📝 Recent Work Updates" 섹션 찾기 및 기존 표 제거
 if "📝 Recent Work Updates" in readme_content:
@@ -29,7 +55,7 @@ for commit in commits:
     files = commit.files
     for file in files:
         # README.md, .DS_Store 파일 및 .github 폴더에 대한 커밋 제외
-        if ".DS_Store" in file.filename or file.filename.endswith("README.md") or file.filename.startswith(".github/"):
+        if ".DS_Store" in file.filename or file.filename.endswith("README.md") or file.filename.startswith(".github/") or ".gitignore" in file.filename:
             continue
         file_key = (file.filename, commit.commit.author.name)  # 파일명과 작업자 이름을 키로 사용
         if file_key not in unique_updates:
@@ -40,8 +66,6 @@ for commit in commits:
             current_commit_date = commit.commit.author.date
             if current_commit_date > existing_commit_date:
                 unique_updates[file_key] = commit
-
-
 
 # 최근 업데이트 정보를 표 형식으로 추가
 table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
