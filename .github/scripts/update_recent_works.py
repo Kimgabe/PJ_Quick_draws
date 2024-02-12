@@ -28,7 +28,8 @@ unique_updates = {}
 for commit in commits:
     files = commit.files
     for file in files:
-        if ".DS_Store" in file.filename or file.filename.endswith("README.md"):
+        # README.md, .DS_Store 파일 및 .github 폴더에 대한 커밋 제외
+        if ".DS_Store" in file.filename or file.filename.endswith("README.md") or file.filename.startswith(".github/"):
             continue
         file_key = (file.filename, commit.commit.author.name)  # 파일명과 작업자 이름을 키로 사용
         if file_key not in unique_updates:
@@ -39,6 +40,8 @@ for commit in commits:
             current_commit_date = commit.commit.author.date
             if current_commit_date > existing_commit_date:
                 unique_updates[file_key] = commit
+
+
 
 # 최근 업데이트 정보를 표 형식으로 추가
 table_header = "| 날짜 | 분류 | 작업명 | 링크 | 작업자 | Commit 유형 |\n| --- | --- | --- | --- | --- | --- |\n"
