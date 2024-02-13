@@ -3,3 +3,9 @@
 ._.DS_Store     # Ignore ._DS_Store files (used for network shares)
 **/.DS_Store    # Ignore .DS_Store files in all directories
 **/._.DS_Store  # Ignore ._DS_Store files in all directories
+
+# JetBrains IDE project files 무시
+.idea/
+
+# Jupyter Notebook checkpoints 무시
+.ipynb_checkpoints/
